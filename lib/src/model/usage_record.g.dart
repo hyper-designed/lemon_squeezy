@@ -38,27 +38,17 @@ UsageRecord _$UsageRecordFromJson(Map<String, dynamic> json) => UsageRecord(
           .fromJson(json['updated_at'] as String),
     );
 
-Map<String, dynamic> _$UsageRecordToJson(UsageRecord instance) {
-  final val = <String, dynamic>{
-    'type': _$ResourceTypeEnumMap[instance.type]!,
-    'id': instance.id,
-    'subscription_item_id': instance.subscriptionItemId,
-    'quantity': instance.quantity,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('action', _$UsageActionEnumMap[instance.action]);
-  val['created_at'] =
-      const DateTimeISO8601Converter().toJson(instance.createdAt);
-  val['updated_at'] =
-      const DateTimeISO8601Converter().toJson(instance.updatedAt);
-  return val;
-}
+Map<String, dynamic> _$UsageRecordToJson(UsageRecord instance) =>
+    <String, dynamic>{
+      'type': _$ResourceTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'subscription_item_id': instance.subscriptionItemId,
+      'quantity': instance.quantity,
+      if (_$UsageActionEnumMap[instance.action] case final value?)
+        'action': value,
+      'created_at': const DateTimeISO8601Converter().toJson(instance.createdAt),
+      'updated_at': const DateTimeISO8601Converter().toJson(instance.updatedAt),
+    };
 
 const _$UsageActionEnumMap = {
   UsageAction.increment: 'increment',

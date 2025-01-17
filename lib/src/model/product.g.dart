@@ -51,38 +51,28 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
           const [],
     );
 
-Map<String, dynamic> _$ProductToJson(Product instance) {
-  final val = <String, dynamic>{
-    'type': _$ResourceTypeEnumMap[instance.type]!,
-    'id': instance.id,
-    'store_id': instance.storeId,
-    'name': instance.name,
-    'slug': instance.slug,
-    'description': instance.description,
-    'status': _$ProductStatusEnumMap[instance.status]!,
-    'status_formatted': instance.statusFormatted,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('thumb_url', instance.thumbUrl);
-  writeNotNull('large_thumb_url', instance.largeThumbUrl);
-  writeNotNull('price', instance.price);
-  val['price_formatted'] = instance.priceFormatted;
-  writeNotNull('from_price', instance.fromPrice);
-  writeNotNull('to_price', instance.toPrice);
-  val['pay_what_you_want'] = instance.payWhatYouWant;
-  val['buy_now_url'] = instance.buyNowUrl;
-  val['created_at'] = instance.createdAt;
-  val['updated_at'] = instance.updatedAt;
-  val['test_mode'] = instance.testMode;
-  val['variants'] = instance.variants.map((e) => e.toJson()).toList();
-  return val;
-}
+Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
+      'type': _$ResourceTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'store_id': instance.storeId,
+      'name': instance.name,
+      'slug': instance.slug,
+      'description': instance.description,
+      'status': _$ProductStatusEnumMap[instance.status]!,
+      'status_formatted': instance.statusFormatted,
+      if (instance.thumbUrl case final value?) 'thumb_url': value,
+      if (instance.largeThumbUrl case final value?) 'large_thumb_url': value,
+      if (instance.price case final value?) 'price': value,
+      'price_formatted': instance.priceFormatted,
+      if (instance.fromPrice case final value?) 'from_price': value,
+      if (instance.toPrice case final value?) 'to_price': value,
+      'pay_what_you_want': instance.payWhatYouWant,
+      'buy_now_url': instance.buyNowUrl,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'test_mode': instance.testMode,
+      'variants': instance.variants.map((e) => e.toJson()).toList(),
+    };
 
 const _$ProductStatusEnumMap = {
   ProductStatus.draft: 'draft',

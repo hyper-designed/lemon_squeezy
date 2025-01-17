@@ -54,42 +54,38 @@ Price _$PriceFromJson(Map<String, dynamic> json) => Price(
       updatedAt: json['updated_at'] as String,
     );
 
-Map<String, dynamic> _$PriceToJson(Price instance) {
-  final val = <String, dynamic>{
-    'type': _$ResourceTypeEnumMap[instance.type]!,
-    'id': instance.id,
-    'variant_id': instance.variantId,
-    'category': _$PriceCategoryEnumMap[instance.category]!,
-    'scheme': _$PriceSchemeEnumMap[instance.scheme]!,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull(
-      'usageAggregation', _$UsageAggregationEnumMap[instance.usageAggregation]);
-  writeNotNull('unit_price', instance.unitPrice);
-  writeNotNull('unit_price_decimal', instance.unitPriceDecimal);
-  writeNotNull('setup_fee_enabled', instance.setupFeeEnabled);
-  writeNotNull('setup_fee', instance.setupFee);
-  val['package_size'] = instance.packageSize;
-  writeNotNull('tiers', instance.tiers?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'renewal_interval_unit', _$IntervalEnumMap[instance.renewalInterval]);
-  writeNotNull('renewal_interval_quantity', instance.renewalIntervalQuantity);
-  writeNotNull(
-      'trial_interval_unit', _$IntervalEnumMap[instance.trialInterval]);
-  writeNotNull('trial_interval_quantity', instance.trialIntervalQuantity);
-  writeNotNull('min_price', instance.minPrice);
-  writeNotNull('suggested_price', instance.suggestedPrice);
-  val['tax_code'] = instance.taxCode;
-  val['created_at'] = instance.createdAt;
-  val['updated_at'] = instance.updatedAt;
-  return val;
-}
+Map<String, dynamic> _$PriceToJson(Price instance) => <String, dynamic>{
+      'type': _$ResourceTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'variant_id': instance.variantId,
+      'category': _$PriceCategoryEnumMap[instance.category]!,
+      'scheme': _$PriceSchemeEnumMap[instance.scheme]!,
+      if (_$UsageAggregationEnumMap[instance.usageAggregation]
+          case final value?)
+        'usageAggregation': value,
+      if (instance.unitPrice case final value?) 'unit_price': value,
+      if (instance.unitPriceDecimal case final value?)
+        'unit_price_decimal': value,
+      if (instance.setupFeeEnabled case final value?)
+        'setup_fee_enabled': value,
+      if (instance.setupFee case final value?) 'setup_fee': value,
+      'package_size': instance.packageSize,
+      if (instance.tiers?.map((e) => e.toJson()).toList() case final value?)
+        'tiers': value,
+      if (_$IntervalEnumMap[instance.renewalInterval] case final value?)
+        'renewal_interval_unit': value,
+      if (instance.renewalIntervalQuantity case final value?)
+        'renewal_interval_quantity': value,
+      if (_$IntervalEnumMap[instance.trialInterval] case final value?)
+        'trial_interval_unit': value,
+      if (instance.trialIntervalQuantity case final value?)
+        'trial_interval_quantity': value,
+      if (instance.minPrice case final value?) 'min_price': value,
+      if (instance.suggestedPrice case final value?) 'suggested_price': value,
+      'tax_code': instance.taxCode,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+    };
 
 const _$PriceCategoryEnumMap = {
   PriceCategory.oneTime: 'one_time',
@@ -138,18 +134,10 @@ PriceTier _$PriceTierFromJson(Map<String, dynamic> json) => PriceTier(
       fixedFee: (json['fixed_fee'] as num?)?.toDouble(),
     );
 
-Map<String, dynamic> _$PriceTierToJson(PriceTier instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('last_unit', instance.lastUnit);
-  writeNotNull('unit_price', instance.unitPrice);
-  writeNotNull('unit_price_decimal', instance.unitPriceDecimal);
-  writeNotNull('fixed_fee', instance.fixedFee);
-  return val;
-}
+Map<String, dynamic> _$PriceTierToJson(PriceTier instance) => <String, dynamic>{
+      if (instance.lastUnit case final value?) 'last_unit': value,
+      if (instance.unitPrice case final value?) 'unit_price': value,
+      if (instance.unitPriceDecimal case final value?)
+        'unit_price_decimal': value,
+      if (instance.fixedFee case final value?) 'fixed_fee': value,
+    };

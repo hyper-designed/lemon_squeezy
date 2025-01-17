@@ -70,60 +70,49 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       testMode: json['test_mode'] as bool,
     );
 
-Map<String, dynamic> _$OrderToJson(Order instance) {
-  final val = <String, dynamic>{
-    'type': _$ResourceTypeEnumMap[instance.type]!,
-    'id': instance.id,
-    'store_id': instance.storeId,
-    'customer_id': instance.customerId,
-    'identifier': instance.identifier,
-    'order_number': instance.orderNumber,
-    'user_name': instance.userName,
-    'user_email': instance.userEmail,
-    'currency': instance.currency,
-    'currency_rate': instance.currencyRate,
-    'subtotal': instance.subtotal,
-    'setup_fee': instance.setupFee,
-    'discount_total': instance.discountTotal,
-    'tax': instance.tax,
-    'total': instance.total,
-    'refunded_amount': instance.refundedAmount,
-    'subtotal_usd': instance.subtotalUsd,
-    'setup_fee_usd': instance.setupFeeUsd,
-    'discount_total_usd': instance.discountTotalUsd,
-    'tax_usd': instance.taxUsd,
-    'total_usd': instance.totalUsd,
-    'refunded_amount_usd': instance.refundedAmountUsd,
-    'tax_name': instance.taxName,
-    'tax_rate': instance.taxRate,
-    'tax_inclusive': instance.taxInclusive,
-    'status': instance.status,
-    'status_formatted': instance.statusFormatted,
-    'refunded': instance.refunded,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('refunded_at',
-      const DateTimeISO8601NullableConverter().toJson(instance.refundedAt));
-  val['subtotal_formatted'] = instance.subtotalFormatted;
-  val['setup_fee_formatted'] = instance.setupFeeFormatted;
-  val['discount_total_formatted'] = instance.discountTotalFormatted;
-  val['tax_formatted'] = instance.taxFormatted;
-  val['total_formatted'] = instance.totalFormatted;
-  val['refunded_amount_formatted'] = instance.refundedAmountFormatted;
-  val['firstOrderItem'] = instance.firstOrderItem.toJson();
-  val['created_at'] =
-      const DateTimeISO8601Converter().toJson(instance.createdAt);
-  val['updated_at'] =
-      const DateTimeISO8601Converter().toJson(instance.updatedAt);
-  val['test_mode'] = instance.testMode;
-  return val;
-}
+Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
+      'type': _$ResourceTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'store_id': instance.storeId,
+      'customer_id': instance.customerId,
+      'identifier': instance.identifier,
+      'order_number': instance.orderNumber,
+      'user_name': instance.userName,
+      'user_email': instance.userEmail,
+      'currency': instance.currency,
+      'currency_rate': instance.currencyRate,
+      'subtotal': instance.subtotal,
+      'setup_fee': instance.setupFee,
+      'discount_total': instance.discountTotal,
+      'tax': instance.tax,
+      'total': instance.total,
+      'refunded_amount': instance.refundedAmount,
+      'subtotal_usd': instance.subtotalUsd,
+      'setup_fee_usd': instance.setupFeeUsd,
+      'discount_total_usd': instance.discountTotalUsd,
+      'tax_usd': instance.taxUsd,
+      'total_usd': instance.totalUsd,
+      'refunded_amount_usd': instance.refundedAmountUsd,
+      'tax_name': instance.taxName,
+      'tax_rate': instance.taxRate,
+      'tax_inclusive': instance.taxInclusive,
+      'status': instance.status,
+      'status_formatted': instance.statusFormatted,
+      'refunded': instance.refunded,
+      if (const DateTimeISO8601NullableConverter().toJson(instance.refundedAt)
+          case final value?)
+        'refunded_at': value,
+      'subtotal_formatted': instance.subtotalFormatted,
+      'setup_fee_formatted': instance.setupFeeFormatted,
+      'discount_total_formatted': instance.discountTotalFormatted,
+      'tax_formatted': instance.taxFormatted,
+      'total_formatted': instance.totalFormatted,
+      'refunded_amount_formatted': instance.refundedAmountFormatted,
+      'firstOrderItem': instance.firstOrderItem.toJson(),
+      'created_at': const DateTimeISO8601Converter().toJson(instance.createdAt),
+      'updated_at': const DateTimeISO8601Converter().toJson(instance.updatedAt),
+      'test_mode': instance.testMode,
+    };
 
 const _$ResourceTypeEnumMap = {
   ResourceType.products: 'products',

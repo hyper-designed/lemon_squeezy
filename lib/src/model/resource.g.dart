@@ -6,24 +6,16 @@ part of 'resource.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$ResourceDataToJson(ResourceData instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('stringify', instance.stringify);
-  val['hashCode'] = instance.hashCode;
-  val['type'] = _$ResourceTypeEnumMap[instance.type]!;
-  val['id'] = instance.id;
-  writeNotNull('relationships', instance.relationships);
-  writeNotNull('links', instance.links);
-  val['props'] = instance.props;
-  return val;
-}
+Map<String, dynamic> _$ResourceDataToJson(ResourceData instance) =>
+    <String, dynamic>{
+      if (instance.stringify case final value?) 'stringify': value,
+      'hashCode': instance.hashCode,
+      'type': _$ResourceTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      if (instance.relationships case final value?) 'relationships': value,
+      if (instance.links case final value?) 'links': value,
+      'props': instance.props,
+    };
 
 const _$ResourceTypeEnumMap = {
   ResourceType.products: 'products',
@@ -53,21 +45,12 @@ Resource<T> _$ResourceFromJson<T extends ResourceData>(
 Map<String, dynamic> _$ResourceToJson<T extends ResourceData>(
   Resource<T> instance,
   Object? Function(T value) toJsonT,
-) {
-  final val = <String, dynamic>{
-    'data': toJsonT(instance.data),
-    'included': instance.included.map((e) => e.toJson()).toList(),
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('links', instance.links);
-  return val;
-}
+) =>
+    <String, dynamic>{
+      'data': toJsonT(instance.data),
+      'included': instance.included.map((e) => e.toJson()).toList(),
+      if (instance.links case final value?) 'links': value,
+    };
 
 ResourceMeta _$ResourceMetaFromJson(Map<String, dynamic> json) => ResourceMeta(
       page: Page.fromJson(json['page'] as Map<String, dynamic>),

@@ -68,54 +68,47 @@ SubscriptionInvoice _$SubscriptionInvoiceFromJson(Map<String, dynamic> json) =>
       testMode: json['test_mode'] as bool,
     );
 
-Map<String, dynamic> _$SubscriptionInvoiceToJson(SubscriptionInvoice instance) {
-  final val = <String, dynamic>{
-    'type': _$ResourceTypeEnumMap[instance.type]!,
-    'id': instance.id,
-    'store_id': instance.storeId,
-    'subscription_id': instance.subscriptionId,
-    'customer_id': instance.customerId,
-    'user_name': instance.userName,
-    'user_email': instance.userEmail,
-    'billing_reason': instance.billingReason,
-    'card_brand': instance.cardBrand,
-    'card_last_four': instance.cardLast4Digits,
-    'currency': instance.currency,
-    'currency_rate': instance.currencyRate,
-    'status': _$SubscriptionInvoiceStatusEnumMap[instance.status]!,
-    'status_formatted': instance.statusFormatted,
-    'refunded': instance.refunded,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('refunded_at',
-      const DateTimeISO8601NullableConverter().toJson(instance.refundedAt));
-  val['subtotal'] = instance.subtotal;
-  val['discount_total'] = instance.discountTotal;
-  val['tax'] = instance.tax;
-  val['tax_inclusive'] = instance.taxInclusive;
-  val['total'] = instance.total;
-  val['refunded_amount'] = instance.refundedAmount;
-  val['subtotal_usd'] = instance.subtotalUsd;
-  val['discount_total_usd'] = instance.discountTotalUsd;
-  val['tax_usd'] = instance.taxUsd;
-  val['total_usd'] = instance.totalUsd;
-  val['refunded_amount_usd'] = instance.refundedAmountUsd;
-  val['subtotal_formatted'] = instance.subtotalFormatted;
-  val['discount_total_formatted'] = instance.discountTotalFormatted;
-  val['tax_formatted'] = instance.taxFormatted;
-  val['refunded_amount_formatted'] = instance.refundedAmountFormatted;
-  val['urls'] = instance.urls;
-  val['created_at'] = instance.createdAt;
-  val['updated_at'] = instance.updatedAt;
-  val['test_mode'] = instance.testMode;
-  return val;
-}
+Map<String, dynamic> _$SubscriptionInvoiceToJson(
+        SubscriptionInvoice instance) =>
+    <String, dynamic>{
+      'type': _$ResourceTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'store_id': instance.storeId,
+      'subscription_id': instance.subscriptionId,
+      'customer_id': instance.customerId,
+      'user_name': instance.userName,
+      'user_email': instance.userEmail,
+      'billing_reason': instance.billingReason,
+      'card_brand': instance.cardBrand,
+      'card_last_four': instance.cardLast4Digits,
+      'currency': instance.currency,
+      'currency_rate': instance.currencyRate,
+      'status': _$SubscriptionInvoiceStatusEnumMap[instance.status]!,
+      'status_formatted': instance.statusFormatted,
+      'refunded': instance.refunded,
+      if (const DateTimeISO8601NullableConverter().toJson(instance.refundedAt)
+          case final value?)
+        'refunded_at': value,
+      'subtotal': instance.subtotal,
+      'discount_total': instance.discountTotal,
+      'tax': instance.tax,
+      'tax_inclusive': instance.taxInclusive,
+      'total': instance.total,
+      'refunded_amount': instance.refundedAmount,
+      'subtotal_usd': instance.subtotalUsd,
+      'discount_total_usd': instance.discountTotalUsd,
+      'tax_usd': instance.taxUsd,
+      'total_usd': instance.totalUsd,
+      'refunded_amount_usd': instance.refundedAmountUsd,
+      'subtotal_formatted': instance.subtotalFormatted,
+      'discount_total_formatted': instance.discountTotalFormatted,
+      'tax_formatted': instance.taxFormatted,
+      'refunded_amount_formatted': instance.refundedAmountFormatted,
+      'urls': instance.urls,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'test_mode': instance.testMode,
+    };
 
 const _$SubscriptionInvoiceStatusEnumMap = {
   SubscriptionInvoiceStatus.pending: 'pending',

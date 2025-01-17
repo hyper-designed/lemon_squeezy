@@ -18,64 +18,40 @@ FilterBy _$FilterByFromJson(Map<String, dynamic> json) => FilterBy(
       status: json['filter[status]'] as String?,
     );
 
-Map<String, dynamic> _$FilterByToJson(FilterBy instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('filter[user_name]', instance.userName);
-  writeNotNull('filter[user_email]', instance.userEmail);
-  writeNotNull('filter[store_id]', instance.storeId);
-  writeNotNull('filter[product_id]', instance.productId);
-  writeNotNull('filter[variant_id]', instance.variantId);
-  writeNotNull('filter[order_id]', instance.orderId);
-  writeNotNull('filter[subscription_id]', instance.subscriptionId);
-  writeNotNull('filter[subscription_item_id]', instance.subscriptionItemId);
-  writeNotNull('filter[status]', instance.status);
-  return val;
-}
+Map<String, dynamic> _$FilterByToJson(FilterBy instance) => <String, dynamic>{
+      if (instance.userName case final value?) 'filter[user_name]': value,
+      if (instance.userEmail case final value?) 'filter[user_email]': value,
+      if (instance.storeId case final value?) 'filter[store_id]': value,
+      if (instance.productId case final value?) 'filter[product_id]': value,
+      if (instance.variantId case final value?) 'filter[variant_id]': value,
+      if (instance.orderId case final value?) 'filter[order_id]': value,
+      if (instance.subscriptionId case final value?)
+        'filter[subscription_id]': value,
+      if (instance.subscriptionItemId case final value?)
+        'filter[subscription_item_id]': value,
+      if (instance.status case final value?) 'filter[status]': value,
+    };
 
 Pagination _$PaginationFromJson(Map<String, dynamic> json) => Pagination(
       pageNumber: (json['page[number]'] as num?)?.toInt(),
       pageSize: (json['page[size]'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$PaginationToJson(Pagination instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('page[number]', instance.pageNumber);
-  writeNotNull('page[size]', instance.pageSize);
-  return val;
-}
+Map<String, dynamic> _$PaginationToJson(Pagination instance) =>
+    <String, dynamic>{
+      if (instance.pageNumber case final value?) 'page[number]': value,
+      if (instance.pageSize case final value?) 'page[size]': value,
+    };
 
 SortBy _$SortByFromJson(Map<String, dynamic> json) => SortBy(
       createdAt: json['sort[created_at]'] as String?,
       updatedAt: json['sort[updated_at]'] as String?,
     );
 
-Map<String, dynamic> _$SortByToJson(SortBy instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('sort[created_at]', instance.createdAt);
-  writeNotNull('sort[updated_at]', instance.updatedAt);
-  return val;
-}
+Map<String, dynamic> _$SortByToJson(SortBy instance) => <String, dynamic>{
+      if (instance.createdAt case final value?) 'sort[created_at]': value,
+      if (instance.updatedAt case final value?) 'sort[updated_at]': value,
+    };
 
 Include _$IncludeFromJson(Map<String, dynamic> json) => Include(
       variants: json['variants'] as bool? ?? false,

@@ -61,46 +61,38 @@ Subscription _$SubscriptionFromJson(Map<String, dynamic> json) => Subscription(
           json['first_subscription_item'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$SubscriptionToJson(Subscription instance) {
-  final val = <String, dynamic>{
-    'type': _$ResourceTypeEnumMap[instance.type]!,
-    'id': instance.id,
-    'store_id': instance.storeId,
-    'customer_id': instance.customerId,
-    'order_id': instance.orderId,
-    'product_id': instance.productId,
-    'variant_id': instance.variantId,
-    'product_name': instance.productName,
-    'variant_name': instance.variantName,
-    'user_name': instance.userName,
-    'user_email': instance.userEmail,
-    'status': _$SubscriptionStatusEnumMap[instance.status]!,
-    'status_formatted': instance.statusFormatted,
-    'card_brand': instance.cardBrand,
-    'card_last_four': instance.cardLast4Digits,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('pause', instance.pause);
-  val['cancelled'] = instance.cancelled;
-  writeNotNull('trial_ends_at',
-      const DateTimeISO8601NullableConverter().toJson(instance.trialEndsAt));
-  val['billing_anchor'] = instance.billingAnchor;
-  val['renews_at'] = const DateTimeISO8601Converter().toJson(instance.renewsAt);
-  writeNotNull('ends_at',
-      const DateTimeISO8601NullableConverter().toJson(instance.endsAt));
-  val['updated_at'] =
-      const DateTimeISO8601Converter().toJson(instance.updatedAt);
-  val['test_mode'] = instance.testMode;
-  writeNotNull('urls', instance.urls?.toJson());
-  val['first_subscription_item'] = instance.firstSubscriptionItem.toJson();
-  return val;
-}
+Map<String, dynamic> _$SubscriptionToJson(Subscription instance) =>
+    <String, dynamic>{
+      'type': _$ResourceTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'store_id': instance.storeId,
+      'customer_id': instance.customerId,
+      'order_id': instance.orderId,
+      'product_id': instance.productId,
+      'variant_id': instance.variantId,
+      'product_name': instance.productName,
+      'variant_name': instance.variantName,
+      'user_name': instance.userName,
+      'user_email': instance.userEmail,
+      'status': _$SubscriptionStatusEnumMap[instance.status]!,
+      'status_formatted': instance.statusFormatted,
+      'card_brand': instance.cardBrand,
+      'card_last_four': instance.cardLast4Digits,
+      if (instance.pause case final value?) 'pause': value,
+      'cancelled': instance.cancelled,
+      if (const DateTimeISO8601NullableConverter().toJson(instance.trialEndsAt)
+          case final value?)
+        'trial_ends_at': value,
+      'billing_anchor': instance.billingAnchor,
+      'renews_at': const DateTimeISO8601Converter().toJson(instance.renewsAt),
+      if (const DateTimeISO8601NullableConverter().toJson(instance.endsAt)
+          case final value?)
+        'ends_at': value,
+      'updated_at': const DateTimeISO8601Converter().toJson(instance.updatedAt),
+      'test_mode': instance.testMode,
+      if (instance.urls?.toJson() case final value?) 'urls': value,
+      'first_subscription_item': instance.firstSubscriptionItem.toJson(),
+    };
 
 const _$SubscriptionStatusEnumMap = {
   SubscriptionStatus.onTrial: 'on_trial',
@@ -132,21 +124,14 @@ SubscriptionUrls _$SubscriptionUrlsFromJson(Map<String, dynamic> json) =>
           json['customerPortalUpdateSubscription'] as String?,
     );
 
-Map<String, dynamic> _$SubscriptionUrlsToJson(SubscriptionUrls instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('updatePaymentMethod', instance.updatePaymentMethod);
-  writeNotNull('customerPortal', instance.customerPortal);
-  writeNotNull('customerPortalUpdateSubscription',
-      instance.customerPortalUpdateSubscription);
-  return val;
-}
+Map<String, dynamic> _$SubscriptionUrlsToJson(SubscriptionUrls instance) =>
+    <String, dynamic>{
+      if (instance.updatePaymentMethod case final value?)
+        'updatePaymentMethod': value,
+      if (instance.customerPortal case final value?) 'customerPortal': value,
+      if (instance.customerPortalUpdateSubscription case final value?)
+        'customerPortalUpdateSubscription': value,
+    };
 
 SubscriptionItemList _$SubscriptionItemListFromJson(
         Map<String, dynamic> json) =>
@@ -263,23 +248,17 @@ SubscriptionUpdate _$SubscriptionUpdateFromJson(Map<String, dynamic> json) =>
       cancelled: json['cancelled'] as bool?,
     );
 
-Map<String, dynamic> _$SubscriptionUpdateToJson(SubscriptionUpdate instance) {
-  final val = <String, dynamic>{
-    'subscriptionId': instance.subscriptionId,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('variantId', instance.variantId);
-  writeNotNull('billing_anchor', instance.billingAnchor);
-  writeNotNull('trial_ends_at',
-      const DateTimeISO8601NullableConverter().toJson(instance.trialEndsAt));
-  writeNotNull('invoice_immediately', instance.invoiceImmediately);
-  writeNotNull('disable_proration', instance.disableProration);
-  writeNotNull('cancelled', instance.cancelled);
-  return val;
-}
+Map<String, dynamic> _$SubscriptionUpdateToJson(SubscriptionUpdate instance) =>
+    <String, dynamic>{
+      'subscriptionId': instance.subscriptionId,
+      if (instance.variantId case final value?) 'variantId': value,
+      if (instance.billingAnchor case final value?) 'billing_anchor': value,
+      if (const DateTimeISO8601NullableConverter().toJson(instance.trialEndsAt)
+          case final value?)
+        'trial_ends_at': value,
+      if (instance.invoiceImmediately case final value?)
+        'invoice_immediately': value,
+      if (instance.disableProration case final value?)
+        'disable_proration': value,
+      if (instance.cancelled case final value?) 'cancelled': value,
+    };

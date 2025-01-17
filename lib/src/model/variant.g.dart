@@ -60,46 +60,38 @@ ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) =>
           : Price.fromJson(json['price_model'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$ProductVariantToJson(ProductVariant instance) {
-  final val = <String, dynamic>{
-    'type': _$ResourceTypeEnumMap[instance.type]!,
-    'id': instance.id,
-    'product_id': instance.productId,
-    'name': instance.name,
-    'slug': instance.slug,
-    'description': instance.description,
-    'price': instance.price,
-    'is_subscription': instance.isSubscription,
-    'interval': _$IntervalEnumMap[instance.interval]!,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('interval_count', instance.intervalCount);
-  val['trial_interval'] = instance.trialInterval;
-  writeNotNull('trial_interval_count', instance.trialIntervalCount);
-  val['pay_what_you_want'] = instance.payWhatYouWant;
-  val['min_price'] = instance.minPrice;
-  val['suggested_price'] = instance.suggestedPrice;
-  val['has_license_keys'] = instance.hasLicenseKeys;
-  val['license_activation_limit'] = instance.licenseActivationLimit;
-  val['is_license_limit_unlimited'] = instance.isLicenseLimitUnlimited;
-  val['license_length_value'] = instance.licenseLengthValue;
-  val['license_length_unit'] = instance.licenseLengthUnit;
-  val['is_license_length_unlimited'] = instance.isLicenseLengthUnlimited;
-  val['sort'] = instance.sort;
-  val['status'] = _$ProductVariantStatusEnumMap[instance.status]!;
-  val['status_formatted'] = instance.statusFormatted;
-  val['created_at'] = instance.createdAt;
-  val['updated_at'] = instance.updatedAt;
-  val['test_mode'] = instance.testMode;
-  writeNotNull('price_model', instance.priceModel?.toJson());
-  return val;
-}
+Map<String, dynamic> _$ProductVariantToJson(ProductVariant instance) =>
+    <String, dynamic>{
+      'type': _$ResourceTypeEnumMap[instance.type]!,
+      'id': instance.id,
+      'product_id': instance.productId,
+      'name': instance.name,
+      'slug': instance.slug,
+      'description': instance.description,
+      'price': instance.price,
+      'is_subscription': instance.isSubscription,
+      'interval': _$IntervalEnumMap[instance.interval]!,
+      if (instance.intervalCount case final value?) 'interval_count': value,
+      'trial_interval': instance.trialInterval,
+      if (instance.trialIntervalCount case final value?)
+        'trial_interval_count': value,
+      'pay_what_you_want': instance.payWhatYouWant,
+      'min_price': instance.minPrice,
+      'suggested_price': instance.suggestedPrice,
+      'has_license_keys': instance.hasLicenseKeys,
+      'license_activation_limit': instance.licenseActivationLimit,
+      'is_license_limit_unlimited': instance.isLicenseLimitUnlimited,
+      'license_length_value': instance.licenseLengthValue,
+      'license_length_unit': instance.licenseLengthUnit,
+      'is_license_length_unlimited': instance.isLicenseLengthUnlimited,
+      'sort': instance.sort,
+      'status': _$ProductVariantStatusEnumMap[instance.status]!,
+      'status_formatted': instance.statusFormatted,
+      'created_at': instance.createdAt,
+      'updated_at': instance.updatedAt,
+      'test_mode': instance.testMode,
+      if (instance.priceModel?.toJson() case final value?) 'price_model': value,
+    };
 
 const _$IntervalEnumMap = {
   Interval.day: 'day',
