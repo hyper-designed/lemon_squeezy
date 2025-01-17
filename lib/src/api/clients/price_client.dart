@@ -1,5 +1,3 @@
-import 'package:chopper/chopper.dart';
-
 import '../../model/models.dart';
 import '../endpoints/endpoints.dart';
 import '../lemon_squeezy_error.dart';
@@ -9,7 +7,7 @@ final class PriceClient {
 
   PriceClient(this.api);
 
-  Future<Resource<Price>> getPriceResource(
+  Future<Resource<Price>> getPrice(
     String priceId, {
     Include? include,
   }) async {
@@ -38,4 +36,4 @@ final class PriceClient {
     }
     throw LemonSqueezyApiError.fromJson(response.body!);
   }
-} 
+}
