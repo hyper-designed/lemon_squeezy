@@ -163,8 +163,7 @@ class Price extends ResourceData {
   Map<String, dynamic> toJson() => _$PriceToJson(this);
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         ...super.props,
         category,
         scheme,

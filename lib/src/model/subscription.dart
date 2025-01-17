@@ -147,8 +147,7 @@ class Subscription extends ResourceData {
   Map<String, dynamic> toJson() => _$SubscriptionToJson(this);
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         ...super.props,
         storeId,
         customerId,
@@ -196,8 +195,7 @@ class SubscriptionUrls with EquatableMixin {
   Map<String, dynamic> toJson() => _$SubscriptionUrlsToJson(this);
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         updatePaymentMethod,
         customerPortal,
         customerPortalUpdateSubscription,
@@ -261,8 +259,7 @@ class SubscriptionItem extends ResourceData {
   Map<String, dynamic> toJson() => _$SubscriptionItemToJson(this);
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         ...super.props,
         subscriptionId,
         priceId,
@@ -304,11 +301,11 @@ class SubscriptionItemUpdate with EquatableMixin {
         "attributes": {
           "quantity": _$SubscriptionItemUpdatePerFieldToJson.quantity(quantity),
           _$SubscriptionItemUpdateFieldMap["invoiceImmediately"]:
-          _$SubscriptionItemUpdatePerFieldToJson
-              .invoiceImmediately(invoiceImmediately),
+              _$SubscriptionItemUpdatePerFieldToJson
+                  .invoiceImmediately(invoiceImmediately),
           _$SubscriptionItemUpdateFieldMap["disableProration"]:
-          _$SubscriptionItemUpdatePerFieldToJson
-              .disableProration(disableProration),
+              _$SubscriptionItemUpdatePerFieldToJson
+                  .disableProration(disableProration),
         }
       },
     };
@@ -355,8 +352,7 @@ class SubscriptionItemUsage with EquatableMixin {
   Map<String, dynamic> toJson() => _$SubscriptionItemUsageToJson(this);
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         periodStart,
         periodEnd,
         quantity,
@@ -442,14 +438,12 @@ class SubscriptionUpdate with EquatableMixin {
   factory SubscriptionUpdate.fromJson(Map<String, dynamic> json) =>
       _$SubscriptionUpdateFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'data': _$SubscriptionUpdateToJson(this),
       };
 
   @override
-  List<Object?> get props =>
-      [
+  List<Object?> get props => [
         subscriptionId,
         variantId,
         billingAnchor,

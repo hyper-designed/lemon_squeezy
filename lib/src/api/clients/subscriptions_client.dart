@@ -1,8 +1,5 @@
-import 'package:chopper/chopper.dart';
-
 import '../../model/models.dart';
 import '../endpoints/endpoints.dart';
-import '../lemon_squeezy_error.dart';
 
 final class SubscriptionsClient {
   final SubscriptionsApi api;
@@ -11,7 +8,8 @@ final class SubscriptionsClient {
 
   SubscriptionsClient(this.api, this.invoices, this.items);
 
-  Future<Resource<Subscription>> getSubscription(String id, {Include? include}) async {
+  Future<Resource<Subscription>> getSubscription(String id,
+      {Include? include}) async {
     final response = await api.getSubscription(id, include?.toQueryParam());
     if (response.body != null && response.isSuccessful) {
       return Resource<Subscription>.fromJson(response.body!);
@@ -20,7 +18,8 @@ final class SubscriptionsClient {
   }
 
   Future<SubscriptionList> getSubscriptionsForUser(String userEmail) async {
-    final response = await api.getAllSubscriptions(FilterBy(userEmail: userEmail).toQueryParams());
+    final response = await api
+        .getAllSubscriptions(FilterBy(userEmail: userEmail).toQueryParams());
     if (response.body != null && response.isSuccessful) {
       return SubscriptionList.fromJson(response.body!);
     }
@@ -54,8 +53,10 @@ final class SubscriptionsClient {
     throw LemonSqueezyApiError.fromJson(response.body!);
   }
 
-  Future<Subscription> updateSubscription(String subscriptionId, SubscriptionUpdate update) async {
-    final response = await api.updateSubscription(subscriptionId, update.toJson());
+  Future<Subscription> updateSubscription(
+      String subscriptionId, SubscriptionUpdate update) async {
+    final response =
+        await api.updateSubscription(subscriptionId, update.toJson());
     if (response.body != null && response.isSuccessful) {
       return Subscription.fromJson(response.body!);
     }
@@ -68,8 +69,10 @@ class SubscriptionInvoicesClient {
 
   SubscriptionInvoicesClient(this.api);
 
-  Future<Resource<SubscriptionInvoice>> getSubscriptionInvoice(String id, {Include? include}) async {
-    final response = await api.getSubscriptionInvoice(id, include?.toQueryParam());
+  Future<Resource<SubscriptionInvoice>> getSubscriptionInvoice(String id,
+      {Include? include}) async {
+    final response =
+        await api.getSubscriptionInvoice(id, include?.toQueryParam());
     if (response.body != null && response.isSuccessful) {
       return Resource<SubscriptionInvoice>.fromJson(response.body!);
     }
@@ -98,7 +101,8 @@ class SubscriptionInvoicesClient {
   /// Returns the download URL of the generated invoice.
   Future<String> generateSubscriptionInvoice(String id) async {
     final response = await api.generateSubscriptionInvoice(id);
-    if (response.body case {'meta': {'urls': {'download_invoice': String url}}}) {
+    if (response.body
+        case {'meta': {'urls': {'download_invoice': String url}}}) {
       return url;
     }
     throw LemonSqueezyApiError.fromJson(response.body!);
@@ -110,7 +114,8 @@ class SubscriptionItemsClient {
 
   SubscriptionItemsClient(this.api);
 
-  Future<Resource<SubscriptionItem>> getSubscriptionItem(String id, {Include? include}) async {
+  Future<Resource<SubscriptionItem>> getSubscriptionItem(String id,
+      {Include? include}) async {
     final response = await api.getSubscriptionItem(id, include?.toQueryParam());
     if (response.body != null && response.isSuccessful) {
       return Resource<SubscriptionItem>.fromJson(response.body!);
@@ -137,19 +142,22 @@ class SubscriptionItemsClient {
     throw LemonSqueezyApiError.fromJson(response.body!);
   }
 
-  Future<Resource<SubscriptionItem>> updateSubscriptionItem(SubscriptionItemUpdate update) async {
-    final response = await api.updateSubscriptionItem(update.id, update.toJson());
+  Future<Resource<SubscriptionItem>> updateSubscriptionItem(
+      SubscriptionItemUpdate update) async {
+    final response =
+        await api.updateSubscriptionItem(update.id, update.toJson());
     if (response.body != null && response.isSuccessful) {
       return Resource<SubscriptionItem>.fromJson(response.body!);
     }
     throw LemonSqueezyApiError.fromJson(response.body!);
   }
 
-  Future<SubscriptionItemUsage> getCurrentUsage(String subscriptionItemId) async {
+  Future<SubscriptionItemUsage> getCurrentUsage(
+      String subscriptionItemId) async {
     final response = await api.getCurrentUsage(subscriptionItemId);
     if (response.body != null && response.isSuccessful) {
       return SubscriptionItemUsage.fromJson(response.body!);
     }
     throw LemonSqueezyApiError.fromJson(response.body!);
   }
-} 
+}

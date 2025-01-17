@@ -1,6 +1,5 @@
 import '../../model/models.dart';
 import '../endpoints/endpoints.dart';
-import '../lemon_squeezy_error.dart';
 
 final class ProductsClient {
   final ProductsApi api;

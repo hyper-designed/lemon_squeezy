@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'lemon_squeezy_error.g.dart';
+part 'api_error.g.dart';
 
 @JsonSerializable()
 class LemonSqueezyError extends Error with EquatableMixin {

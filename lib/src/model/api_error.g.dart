@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'lemon_squeezy_error.dart';
+part of 'api_error.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

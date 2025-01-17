@@ -1,15 +1,13 @@
-import 'package:chopper/chopper.dart';
-
 import '../../model/models.dart';
 import '../endpoints/endpoints.dart';
-import '../lemon_squeezy_error.dart';
 
 final class UsageRecordsClient {
   final UsageRecordsApi api;
 
   UsageRecordsClient(this.api);
 
-  Future<Resource<UsageRecord>> getUsageRecord(String id, {Include? include}) async {
+  Future<Resource<UsageRecord>> getUsageRecord(String id,
+      {Include? include}) async {
     final response = await api.getUsageRecord(id, include?.toQueryParam());
     if (response.body != null && response.isSuccessful) {
       return Resource<UsageRecord>.fromJson(response.body!);
@@ -55,7 +53,8 @@ final class UsageRecordsClient {
       throw LemonSqueezyApiError.fromJson(response.body!);
     }
 
-    final List<UsageRecord> records = UsageRecordList.fromJson(response.body!).data;
+    final List<UsageRecord> records =
+        UsageRecordList.fromJson(response.body!).data;
 
     if (startDate != null) {
       records.removeWhere((record) => record.createdAt.isBefore(startDate));
@@ -67,11 +66,12 @@ final class UsageRecordsClient {
     return records;
   }
 
-  Future<Resource<UsageRecord>> createUsageRecord(UsageRecordCreate create) async {
+  Future<Resource<UsageRecord>> createUsageRecord(
+      UsageRecordCreate create) async {
     final response = await api.createUsageRecord(create.toJson());
     if (response.body != null && response.isSuccessful) {
       return Resource<UsageRecord>.fromJson(response.body!);
     }
     throw LemonSqueezyApiError.fromJson(response.body!);
   }
-} 
+}
