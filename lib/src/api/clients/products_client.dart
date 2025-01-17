@@ -1,5 +1,3 @@
-import 'package:chopper/chopper.dart';
-
 import '../../model/models.dart';
 import '../endpoints/endpoints.dart';
 import '../lemon_squeezy_error.dart';
@@ -12,10 +10,22 @@ final class ProductsClient {
 
   Future<Resource<Product>> getProduct(String id, {Include? include}) async {
     final response = await api.getProduct(id, include?.toQueryParam());
-    if (response.body != null && response.isSuccessful) {
-      return Resource<Product>.fromJson(response.body!);
+    if (!response.isSuccessful) {
+      throw LemonSqueezyApiError.fromJson(response.body!);
     }
-    throw LemonSqueezyApiError.fromJson(response.body!);
+    final Resource<Product> resource =
+        Resource<Product>.fromJson(response.body!);
+    if (include?.variants == true && resource.included.isNotEmpty) {
+      final List<ProductVariant> variants = [];
+      for (final ResourceData data in resource.included) {
+        if (data is ProductVariant) {
+          variants.add(data);
+        }
+      }
+      return resource.copyWith(
+          data: resource.data.copyWith(variants: variants));
+    }
+    return resource;
   }
 
   Future<ProductList> getAllProducts({
@@ -97,4 +107,4 @@ class ProductVariantsClient {
     }
     throw LemonSqueezyApiError.fromJson(response.body!);
   }
-} 
+}
