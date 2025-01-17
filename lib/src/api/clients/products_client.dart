@@ -83,10 +83,20 @@ class ProductVariantsClient {
   Future<Resource<ProductVariant>> getVariant(String id,
       {Include? include}) async {
     final response = await api.getVariant(id, include?.toQueryParam());
-    if (response.body != null && response.isSuccessful) {
-      return Resource<ProductVariant>.fromJson(response.body!);
+    if (!response.isSuccessful) {
+      throw LemonSqueezyApiError.fromJson(response.body!);
     }
-    throw LemonSqueezyApiError.fromJson(response.body!);
+
+    final Resource<ProductVariant> resource =
+        Resource<ProductVariant>.fromJson(response.body!);
+
+    if (include?.priceModel == true && resource.included.isNotEmpty) {
+      if (resource.included.first case Price price) {
+        return resource.copyWith(
+            data: resource.data.copyWith(priceModel: price));
+      }
+    }
+    return resource;
   }
 
   Future<ProductVariantList> getAllVariants({
