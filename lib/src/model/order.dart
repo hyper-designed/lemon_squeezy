@@ -82,7 +82,7 @@ class Order extends ResourceData {
   final String taxName;
 
   @JsonKey(name: 'tax_rate')
-  final String taxRate;
+  final double taxRate;
 
   @JsonKey(name: 'tax_inclusive')
   final bool taxInclusive;

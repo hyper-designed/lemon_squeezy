@@ -48,7 +48,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       totalUsd: (json['total_usd'] as num).toDouble(),
       refundedAmountUsd: (json['refunded_amount_usd'] as num).toDouble(),
       taxName: json['tax_name'] as String,
-      taxRate: json['tax_rate'] as String,
+      taxRate: (json['tax_rate'] as num).toDouble(),
       taxInclusive: json['tax_inclusive'] as bool,
       status: json['status'] as String,
       statusFormatted: json['status_formatted'] as String,
