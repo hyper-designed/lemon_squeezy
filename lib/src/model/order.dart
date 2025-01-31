@@ -116,6 +116,7 @@ class Order extends ResourceData {
   @JsonKey(name: 'refunded_amount_formatted')
   final String refundedAmountFormatted;
 
+  @JsonKey(name: 'first_order_item')
   final OrderItem firstOrderItem;
 
   @JsonKey(name: 'created_at')

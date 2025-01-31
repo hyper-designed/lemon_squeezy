@@ -62,7 +62,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       totalFormatted: json['total_formatted'] as String,
       refundedAmountFormatted: json['refunded_amount_formatted'] as String,
       firstOrderItem:
-          OrderItem.fromJson(json['firstOrderItem'] as Map<String, dynamic>),
+          OrderItem.fromJson(json['first_order_item'] as Map<String, dynamic>),
       createdAt: const DateTimeISO8601Converter()
           .fromJson(json['created_at'] as String),
       updatedAt: const DateTimeISO8601Converter()
@@ -108,7 +108,7 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'tax_formatted': instance.taxFormatted,
       'total_formatted': instance.totalFormatted,
       'refunded_amount_formatted': instance.refundedAmountFormatted,
-      'firstOrderItem': instance.firstOrderItem.toJson(),
+      'first_order_item': instance.firstOrderItem.toJson(),
       'created_at': const DateTimeISO8601Converter().toJson(instance.createdAt),
       'updated_at': const DateTimeISO8601Converter().toJson(instance.updatedAt),
       'test_mode': instance.testMode,
