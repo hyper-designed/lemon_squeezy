@@ -25,10 +25,14 @@ enum SubscriptionInvoiceStatus {
   pending,
   paid,
   @JsonValue('void')
-  voided,
+  voided('void'),
   refunded,
   @JsonValue('partially_refunded')
-  partiallyRefunded,
+  partiallyRefunded('partially_refunded');
+
+  const SubscriptionInvoiceStatus([this.label]);
+
+  final String? label;
 }
 
 @JsonSerializable()
