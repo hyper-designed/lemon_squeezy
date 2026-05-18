@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'price_api.dart';
 
@@ -34,8 +35,9 @@ final class _$PriceApi extends PriceApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllPrices(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllPrices([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/prices');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(

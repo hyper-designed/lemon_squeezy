@@ -19,19 +19,19 @@ Map<String, dynamic> _$LemonSqueezyErrorToJson(LemonSqueezyError instance) =>
       'detail': instance.detail,
       'title': instance.title,
       'status': instance.status,
-      if (instance.code case final value?) 'code': value,
+      'code': ?instance.code,
     };
 
 LemonSqueezyApiError _$LemonSqueezyApiErrorFromJson(
-        Map<String, dynamic> json) =>
-    LemonSqueezyApiError(
-      errors: (json['errors'] as List<dynamic>)
-          .map((e) => LemonSqueezyError.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+  Map<String, dynamic> json,
+) => LemonSqueezyApiError(
+  errors: (json['errors'] as List<dynamic>)
+      .map((e) => LemonSqueezyError.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
 Map<String, dynamic> _$LemonSqueezyApiErrorToJson(
-        LemonSqueezyApiError instance) =>
-    <String, dynamic>{
-      'errors': instance.errors.map((e) => e.toJson()).toList(),
-    };
+  LemonSqueezyApiError instance,
+) => <String, dynamic>{
+  'errors': instance.errors.map((e) => e.toJson()).toList(),
+};

@@ -11,18 +11,18 @@ abstract class SubscriptionsApi extends ChopperService {
   factory SubscriptionsApi.create([ChopperClient? client]) =>
       _$SubscriptionsApi(client);
 
-  @Get(path: '/subscriptions/{id}')
+  @GET(path: '/subscriptions/{id}')
   Future<Response<JsonMap>> getSubscription(@Path('id') String id,
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Get(path: '/subscriptions')
+  @GET(path: '/subscriptions')
   Future<Response<JsonMap>> getAllSubscriptions(
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Delete(path: '/subscriptions/{id}')
+  @DELETE(path: '/subscriptions/{id}')
   Future<Response<JsonMap>> cancelSubscription(@Path('id') String id);
 
-  @Patch(path: '/subscriptions/{id}')
+  @PATCH(path: '/subscriptions/{id}')
   Future<Response<JsonMap>> updateSubscription(
       @Path('id') String id, @Body() Map<String, dynamic> data);
 }
@@ -34,15 +34,15 @@ abstract class SubscriptionInvoiceApi extends ChopperService {
   factory SubscriptionInvoiceApi.create([ChopperClient? client]) =>
       _$SubscriptionInvoiceApi(client);
 
-  @Get(path: '/subscription-invoices/{id}')
+  @GET(path: '/subscription-invoices/{id}')
   Future<Response<JsonMap>> getSubscriptionInvoice(@Path('id') String id,
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Get(path: '/subscription-invoices')
+  @GET(path: '/subscription-invoices')
   Future<Response<JsonMap>> getAllSubscriptionInvoices(
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Get(path: '/subscription-invoices/{id}/generate-invoice')
+  @GET(path: '/subscription-invoices/{id}/generate-invoice')
   Future<Response<JsonMap>> generateSubscriptionInvoice(@Path('id') String id);
 }
 
@@ -55,22 +55,22 @@ abstract class SubscriptionItemsApi extends ChopperService {
       _$SubscriptionItemsApi(client);
 
   /// REF: https://docs.lemonsqueezy.com/api/subscription-items#retrieve-a-subscription-item
-  @Get(path: '/subscription-items/{id}')
+  @GET(path: '/subscription-items/{id}')
   Future<Response<JsonMap>> getSubscriptionItem(@Path('id') String id,
       [@QueryMap() Map<String, dynamic>? params]);
 
   /// REF: https://docs.lemonsqueezy.com/api/subscription-items#list-all-subscription-items
-  @Get(path: '/subscription-items')
+  @GET(path: '/subscription-items')
   Future<Response<JsonMap>> getAllSubscriptionItems(
       [@QueryMap() Map<String, dynamic>? params]);
 
   /// REF: https://docs.lemonsqueezy.com/api/subscription-items#update-a-subscription-item
-  @Patch(path: '/subscription-items/{id}')
+  @PATCH(path: '/subscription-items/{id}')
   Future<Response<JsonMap>> updateSubscriptionItem(
       @Path('id') String id, @Body() Map<String, dynamic> data);
 
   /// REF: https://docs.lemonsqueezy.com/api/subscription-items#retrieve-a-subscription-item-s-current-usage
-  @Get(path: '/subscription-items/{id}/current-usage')
+  @GET(path: '/subscription-items/{id}/current-usage')
   Future<Response<JsonMap>> getCurrentUsage(
       @Path('id') String subscriptionItemId);
 }

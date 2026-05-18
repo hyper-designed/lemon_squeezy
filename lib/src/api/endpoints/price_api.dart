@@ -10,11 +10,11 @@ abstract class PriceApi extends ChopperService {
 
   factory PriceApi.create([ChopperClient? client]) => _$PriceApi(client);
 
-  @Get(path: '/prices/{id}')
+  @GET(path: '/prices/{id}')
   Future<Response<JsonMap>> getPrice(@Path('id') String priceId,
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Get(path: '/prices')
+  @GET(path: '/prices')
   Future<Response<JsonMap>> getAllPrices(
       [@QueryMap() Map<String, dynamic>? params]);
 }

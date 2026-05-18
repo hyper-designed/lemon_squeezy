@@ -10,15 +10,15 @@ abstract class ProductsApi extends ChopperService {
 
   factory ProductsApi.create([ChopperClient? client]) => _$ProductsApi(client);
 
-  @Get(path: '/products/{id}')
+  @GET(path: '/products/{id}')
   Future<Response<JsonMap>> getProduct(@Path('id') String id,
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Get(path: '/products/{id}/variants')
+  @GET(path: '/products/{id}/variants')
   Future<Response<JsonMap>> getProductVariants(@Path('id') String productId,
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Get(path: '/products')
+  @GET(path: '/products')
   Future<Response<JsonMap>> getAllProducts(
       [@QueryMap() Map<String, dynamic>? params]);
 }
@@ -30,11 +30,11 @@ abstract class ProductVariantsApi extends ChopperService {
   factory ProductVariantsApi.create([ChopperClient? client]) =>
       _$ProductVariantsApi(client);
 
-  @Get(path: '/variants/{id}')
+  @GET(path: '/variants/{id}')
   Future<Response<JsonMap>> getVariant(@Path('id') String id,
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Get(path: '/variants')
+  @GET(path: '/variants')
   Future<Response<JsonMap>> getAllVariants(
       [@QueryMap() Map<String, dynamic>? params]);
 }

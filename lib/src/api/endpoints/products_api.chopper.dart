@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'products_api.dart';
 
@@ -50,8 +51,9 @@ final class _$ProductsApi extends ProductsApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllProducts(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllProducts([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/products');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(
@@ -92,8 +94,9 @@ final class _$ProductVariantsApi extends ProductVariantsApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllVariants(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllVariants([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/variants');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(

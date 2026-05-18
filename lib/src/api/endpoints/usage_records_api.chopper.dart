@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'usage_records_api.dart';
 
@@ -34,8 +35,9 @@ final class _$UsageRecordsApi extends UsageRecordsApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllUsageRecords(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllUsageRecords([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/usage-records');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(
@@ -49,15 +51,11 @@ final class _$UsageRecordsApi extends UsageRecordsApi {
 
   @override
   Future<Response<Map<String, dynamic>>> createUsageRecord(
-      Map<String, dynamic> body) {
+    Map<String, dynamic> body,
+  ) {
     final Uri $url = Uri.parse('/usage-records');
     final $body = body;
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-      body: $body,
-    );
+    final Request $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<Map<String, dynamic>, Map<String, dynamic>>($request);
   }
 }

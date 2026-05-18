@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'subscriptions_api.dart';
 
@@ -34,8 +35,9 @@ final class _$SubscriptionsApi extends SubscriptionsApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllSubscriptions(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllSubscriptions([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/subscriptions');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(
@@ -50,11 +52,7 @@ final class _$SubscriptionsApi extends SubscriptionsApi {
   @override
   Future<Response<Map<String, dynamic>>> cancelSubscription(String id) {
     final Uri $url = Uri.parse('/subscriptions/${id}');
-    final Request $request = Request(
-      'DELETE',
-      $url,
-      client.baseUrl,
-    );
+    final Request $request = Request('DELETE', $url, client.baseUrl);
     return client.send<Map<String, dynamic>, Map<String, dynamic>>($request);
   }
 
@@ -103,8 +101,9 @@ final class _$SubscriptionInvoiceApi extends SubscriptionInvoiceApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllSubscriptionInvoices(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllSubscriptionInvoices([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/subscription-invoices');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(
@@ -118,13 +117,10 @@ final class _$SubscriptionInvoiceApi extends SubscriptionInvoiceApi {
 
   @override
   Future<Response<Map<String, dynamic>>> generateSubscriptionInvoice(
-      String id) {
+    String id,
+  ) {
     final Uri $url = Uri.parse('/subscription-invoices/${id}/generate-invoice');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
-    );
+    final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<Map<String, dynamic>, Map<String, dynamic>>($request);
   }
 }
@@ -157,8 +153,9 @@ final class _$SubscriptionItemsApi extends SubscriptionItemsApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllSubscriptionItems(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllSubscriptionItems([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/subscription-items');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(
@@ -188,14 +185,12 @@ final class _$SubscriptionItemsApi extends SubscriptionItemsApi {
 
   @override
   Future<Response<Map<String, dynamic>>> getCurrentUsage(
-      String subscriptionItemId) {
-    final Uri $url =
-        Uri.parse('/subscription-items/${subscriptionItemId}/current-usage');
-    final Request $request = Request(
-      'GET',
-      $url,
-      client.baseUrl,
+    String subscriptionItemId,
+  ) {
+    final Uri $url = Uri.parse(
+      '/subscription-items/${subscriptionItemId}/current-usage',
     );
+    final Request $request = Request('GET', $url, client.baseUrl);
     return client.send<Map<String, dynamic>, Map<String, dynamic>>($request);
   }
 }

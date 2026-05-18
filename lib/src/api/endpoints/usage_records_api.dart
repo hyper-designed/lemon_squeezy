@@ -11,15 +11,15 @@ abstract class UsageRecordsApi extends ChopperService {
   factory UsageRecordsApi.create([ChopperClient? client]) =>
       _$UsageRecordsApi(client);
 
-  @Get(path: '/usage-records/{id}')
+  @GET(path: '/usage-records/{id}')
   Future<Response<JsonMap>> getUsageRecord(@Path('id') String priceId,
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Get(path: '/usage-records')
+  @GET(path: '/usage-records')
   Future<Response<JsonMap>> getAllUsageRecords(
       [@QueryMap() Map<String, dynamic>? params]);
 
-  @Post(path: '/usage-records')
+  @POST(path: '/usage-records')
   Future<Response<JsonMap>> createUsageRecord(
       @Body() Map<String, dynamic> body);
 }

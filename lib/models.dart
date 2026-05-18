@@ -1,3 +1,3 @@
-library models;
+library;
 
 export 'src/model/models.dart';

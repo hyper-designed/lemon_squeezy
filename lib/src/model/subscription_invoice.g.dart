@@ -7,27 +7,28 @@ part of 'subscription_invoice.dart';
 // **************************************************************************
 
 SubscriptionInvoiceList _$SubscriptionInvoiceListFromJson(
-        Map<String, dynamic> json) =>
-    SubscriptionInvoiceList(
-      meta: ResourceMeta.fromJson(json['meta'] as Map<String, dynamic>),
-      links: json['links'] as Map<String, dynamic>? ?? const {},
-      data: (json['data'] as List<dynamic>)
-          .map((e) => SubscriptionInvoice.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      included: (json['included'] as List<dynamic>?)
-              ?.map((e) => ResourceData.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
-    );
+  Map<String, dynamic> json,
+) => SubscriptionInvoiceList(
+  meta: ResourceMeta.fromJson(json['meta'] as Map<String, dynamic>),
+  links: json['links'] as Map<String, dynamic>? ?? const {},
+  data: (json['data'] as List<dynamic>)
+      .map((e) => SubscriptionInvoice.fromJson(e as Map<String, dynamic>))
+      .toList(),
+  included:
+      (json['included'] as List<dynamic>?)
+          ?.map((e) => ResourceData.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
+);
 
 Map<String, dynamic> _$SubscriptionInvoiceListToJson(
-        SubscriptionInvoiceList instance) =>
-    <String, dynamic>{
-      'meta': instance.meta.toJson(),
-      'links': instance.links,
-      'data': instance.data.map((e) => e.toJson()).toList(),
-      'included': instance.included.map((e) => e.toJson()).toList(),
-    };
+  SubscriptionInvoiceList instance,
+) => <String, dynamic>{
+  'meta': instance.meta.toJson(),
+  'links': instance.links,
+  'data': instance.data.map((e) => e.toJson()).toList(),
+  'included': instance.included.map((e) => e.toJson()).toList(),
+};
 
 SubscriptionInvoice _$SubscriptionInvoiceFromJson(Map<String, dynamic> json) =>
     SubscriptionInvoice(
@@ -45,8 +46,9 @@ SubscriptionInvoice _$SubscriptionInvoiceFromJson(Map<String, dynamic> json) =>
       status: $enumDecode(_$SubscriptionInvoiceStatusEnumMap, json['status']),
       statusFormatted: json['status_formatted'] as String,
       refunded: json['refunded'] as bool,
-      refundedAt: const DateTimeISO8601NullableConverter()
-          .fromJson(json['refunded_at'] as String?),
+      refundedAt: const DateTimeISO8601NullableConverter().fromJson(
+        json['refunded_at'] as String?,
+      ),
       subtotal: (json['subtotal'] as num).toDouble(),
       discountTotal: (json['discount_total'] as num).toDouble(),
       tax: (json['tax'] as num).toDouble(),
@@ -69,46 +71,46 @@ SubscriptionInvoice _$SubscriptionInvoiceFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$SubscriptionInvoiceToJson(
-        SubscriptionInvoice instance) =>
-    <String, dynamic>{
-      'type': _$ResourceTypeEnumMap[instance.type]!,
-      'id': instance.id,
-      'store_id': instance.storeId,
-      'subscription_id': instance.subscriptionId,
-      'customer_id': instance.customerId,
-      'user_name': instance.userName,
-      'user_email': instance.userEmail,
-      'billing_reason': instance.billingReason,
-      'card_brand': instance.cardBrand,
-      'card_last_four': instance.cardLast4Digits,
-      'currency': instance.currency,
-      'currency_rate': instance.currencyRate,
-      'status': _$SubscriptionInvoiceStatusEnumMap[instance.status]!,
-      'status_formatted': instance.statusFormatted,
-      'refunded': instance.refunded,
-      if (const DateTimeISO8601NullableConverter().toJson(instance.refundedAt)
-          case final value?)
-        'refunded_at': value,
-      'subtotal': instance.subtotal,
-      'discount_total': instance.discountTotal,
-      'tax': instance.tax,
-      'tax_inclusive': instance.taxInclusive,
-      'total': instance.total,
-      'refunded_amount': instance.refundedAmount,
-      'subtotal_usd': instance.subtotalUsd,
-      'discount_total_usd': instance.discountTotalUsd,
-      'tax_usd': instance.taxUsd,
-      'total_usd': instance.totalUsd,
-      'refunded_amount_usd': instance.refundedAmountUsd,
-      'subtotal_formatted': instance.subtotalFormatted,
-      'discount_total_formatted': instance.discountTotalFormatted,
-      'tax_formatted': instance.taxFormatted,
-      'refunded_amount_formatted': instance.refundedAmountFormatted,
-      'urls': instance.urls,
-      'created_at': instance.createdAt,
-      'updated_at': instance.updatedAt,
-      'test_mode': instance.testMode,
-    };
+  SubscriptionInvoice instance,
+) => <String, dynamic>{
+  'type': _$ResourceTypeEnumMap[instance.type]!,
+  'id': instance.id,
+  'store_id': instance.storeId,
+  'subscription_id': instance.subscriptionId,
+  'customer_id': instance.customerId,
+  'user_name': instance.userName,
+  'user_email': instance.userEmail,
+  'billing_reason': instance.billingReason,
+  'card_brand': instance.cardBrand,
+  'card_last_four': instance.cardLast4Digits,
+  'currency': instance.currency,
+  'currency_rate': instance.currencyRate,
+  'status': _$SubscriptionInvoiceStatusEnumMap[instance.status]!,
+  'status_formatted': instance.statusFormatted,
+  'refunded': instance.refunded,
+  'refunded_at': ?const DateTimeISO8601NullableConverter().toJson(
+    instance.refundedAt,
+  ),
+  'subtotal': instance.subtotal,
+  'discount_total': instance.discountTotal,
+  'tax': instance.tax,
+  'tax_inclusive': instance.taxInclusive,
+  'total': instance.total,
+  'refunded_amount': instance.refundedAmount,
+  'subtotal_usd': instance.subtotalUsd,
+  'discount_total_usd': instance.discountTotalUsd,
+  'tax_usd': instance.taxUsd,
+  'total_usd': instance.totalUsd,
+  'refunded_amount_usd': instance.refundedAmountUsd,
+  'subtotal_formatted': instance.subtotalFormatted,
+  'discount_total_formatted': instance.discountTotalFormatted,
+  'tax_formatted': instance.taxFormatted,
+  'refunded_amount_formatted': instance.refundedAmountFormatted,
+  'urls': instance.urls,
+  'created_at': instance.createdAt,
+  'updated_at': instance.updatedAt,
+  'test_mode': instance.testMode,
+};
 
 const _$SubscriptionInvoiceStatusEnumMap = {
   SubscriptionInvoiceStatus.pending: 'pending',

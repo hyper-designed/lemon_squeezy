@@ -1,4 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// dart format width=80
 
 part of 'orders_api.dart';
 
@@ -34,8 +35,9 @@ final class _$OrdersApi extends OrdersApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllOrders(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllOrders([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/orders');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(
@@ -50,11 +52,7 @@ final class _$OrdersApi extends OrdersApi {
   @override
   Future<Response<Map<String, dynamic>>> generateOrderInvoice(String orderId) {
     final Uri $url = Uri.parse('/orders/${orderId}/generate-invoice');
-    final Request $request = Request(
-      'POST',
-      $url,
-      client.baseUrl,
-    );
+    final Request $request = Request('POST', $url, client.baseUrl);
     return client.send<Map<String, dynamic>, Map<String, dynamic>>($request);
   }
 }
@@ -87,8 +85,9 @@ final class _$OrderItemsApi extends OrderItemsApi {
   }
 
   @override
-  Future<Response<Map<String, dynamic>>> getAllOrderItems(
-      [Map<String, dynamic>? params]) {
+  Future<Response<Map<String, dynamic>>> getAllOrderItems([
+    Map<String, dynamic>? params,
+  ]) {
     final Uri $url = Uri.parse('/order-items');
     final Map<String, dynamic> $params = params ?? const {};
     final Request $request = Request(

@@ -13,7 +13,8 @@ ProductVariantList _$ProductVariantListFromJson(Map<String, dynamic> json) =>
       data: (json['data'] as List<dynamic>)
           .map((e) => ProductVariant.fromJson(e as Map<String, dynamic>))
           .toList(),
-      included: (json['included'] as List<dynamic>?)
+      included:
+          (json['included'] as List<dynamic>?)
               ?.map((e) => ResourceData.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -71,10 +72,9 @@ Map<String, dynamic> _$ProductVariantToJson(ProductVariant instance) =>
       'price': instance.price,
       'is_subscription': instance.isSubscription,
       'interval': _$IntervalEnumMap[instance.interval]!,
-      if (instance.intervalCount case final value?) 'interval_count': value,
+      'interval_count': ?instance.intervalCount,
       'trial_interval': instance.trialInterval,
-      if (instance.trialIntervalCount case final value?)
-        'trial_interval_count': value,
+      'trial_interval_count': ?instance.trialIntervalCount,
       'pay_what_you_want': instance.payWhatYouWant,
       'min_price': instance.minPrice,
       'suggested_price': instance.suggestedPrice,
@@ -90,7 +90,7 @@ Map<String, dynamic> _$ProductVariantToJson(ProductVariant instance) =>
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
       'test_mode': instance.testMode,
-      if (instance.priceModel?.toJson() case final value?) 'price_model': value,
+      'price_model': ?instance.priceModel?.toJson(),
     };
 
 const _$IntervalEnumMap = {

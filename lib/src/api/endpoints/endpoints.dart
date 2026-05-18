@@ -1,4 +1,4 @@
-library endpoints;
+library;
 
 export 'orders_api.dart';
 export 'price_api.dart';

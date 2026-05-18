@@ -13,7 +13,8 @@ UsageRecordList _$UsageRecordListFromJson(Map<String, dynamic> json) =>
       data: (json['data'] as List<dynamic>)
           .map((e) => UsageRecord.fromJson(e as Map<String, dynamic>))
           .toList(),
-      included: (json['included'] as List<dynamic>?)
+      included:
+          (json['included'] as List<dynamic>?)
               ?.map((e) => ResourceData.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -28,15 +29,17 @@ Map<String, dynamic> _$UsageRecordListToJson(UsageRecordList instance) =>
     };
 
 UsageRecord _$UsageRecordFromJson(Map<String, dynamic> json) => UsageRecord(
-      id: convertToString(json, 'id') as String,
-      subscriptionItemId: (json['subscription_item_id'] as num).toInt(),
-      quantity: (json['quantity'] as num).toInt(),
-      action: $enumDecodeNullable(_$UsageActionEnumMap, json['action']),
-      createdAt: const DateTimeISO8601Converter()
-          .fromJson(json['created_at'] as String),
-      updatedAt: const DateTimeISO8601Converter()
-          .fromJson(json['updated_at'] as String),
-    );
+  id: convertToString(json, 'id') as String,
+  subscriptionItemId: (json['subscription_item_id'] as num).toInt(),
+  quantity: (json['quantity'] as num).toInt(),
+  action: $enumDecodeNullable(_$UsageActionEnumMap, json['action']),
+  createdAt: const DateTimeISO8601Converter().fromJson(
+    json['created_at'] as String,
+  ),
+  updatedAt: const DateTimeISO8601Converter().fromJson(
+    json['updated_at'] as String,
+  ),
+);
 
 Map<String, dynamic> _$UsageRecordToJson(UsageRecord instance) =>
     <String, dynamic>{
@@ -44,8 +47,7 @@ Map<String, dynamic> _$UsageRecordToJson(UsageRecord instance) =>
       'id': instance.id,
       'subscription_item_id': instance.subscriptionItemId,
       'quantity': instance.quantity,
-      if (_$UsageActionEnumMap[instance.action] case final value?)
-        'action': value,
+      'action': ?_$UsageActionEnumMap[instance.action],
       'created_at': const DateTimeISO8601Converter().toJson(instance.createdAt),
       'updated_at': const DateTimeISO8601Converter().toJson(instance.updatedAt),
     };

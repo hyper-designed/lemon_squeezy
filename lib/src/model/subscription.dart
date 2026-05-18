@@ -3,7 +3,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../lemon_squeezy.dart';
 import '../utils.dart';
-import 'interval.dart';
 
 part 'subscription.g.dart';
 
